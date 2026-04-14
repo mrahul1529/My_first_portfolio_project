@@ -1,204 +1,614 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My Portfolio</title>
-  <meta name="description" content="Personal portfolio showcasing projects, skills, and contact information." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0f172a;
-      --card: #111827;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --accent: #22d3ee;
-      --accent-dark: #0ea5b7;
-    }
-    * { box-sizing: border-box }
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: linear-gradient(180deg, #0b1220, var(--bg));
-      color: var(--text);
-      line-height: 1.6;
-    }
-    a { color: var(--accent); text-decoration: none }
-    a:hover { color: var(--accent-dark) }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>M. Rahul | Full Stack Developer</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --navy:#0f1f3d;
+    --navy2:#162544;
+    --accent:#2563eb;
+    --accent2:#3b82f6;
+    --light:#f0f6ff;
+    --white:#ffffff;
+    --gray:#94a3b8;
+    --text:#e2e8f0;
+    --card:#1a2f52;
+    --border:#2a3f66;
+  }
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--navy);
+    color:var(--text);
+    font-family:'Segoe UI',system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.7;
+  }
 
-    .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 20px }
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(15,31,61,0.95);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+    display:flex;justify-content:space-between;align-items:center;
+    padding:0 6%;height:64px;
+  }
+  .logo{font-size:20px;font-weight:700;color:var(--white);letter-spacing:1px;}
+  .logo span{color:var(--accent2);}
+  .nav-links{display:flex;gap:32px;list-style:none;}
+  .nav-links a{
+    color:var(--gray);text-decoration:none;font-size:14px;
+    font-weight:500;letter-spacing:.5px;transition:color .2s;
+  }
+  .nav-links a:hover{color:var(--white);}
 
-    header {
-      position: sticky; top: 0; backdrop-filter: blur(10px);
-      background: rgba(15, 23, 42, 0.7);
-      border-bottom: 1px solid #1f2937;
-      z-index: 10;
-    }
-    .nav {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 0;
-    }
-    .brand { font-weight: 700; letter-spacing: 0.4px }
-    .nav ul { list-style: none; display: flex; gap: 18px; padding: 0; margin: 0 }
-    .nav a { padding: 8px 10px; border-radius: 8px }
-    .nav a:hover { background: #0b1220 }
+  /* SECTIONS */
+  section{padding:80px 8%;}
+  .section-tag{
+    display:inline-block;
+    background:rgba(37,99,235,.15);
+    color:var(--accent2);
+    font-size:12px;font-weight:600;letter-spacing:2px;
+    padding:4px 14px;border-radius:20px;
+    margin-bottom:16px;text-transform:uppercase;
+  }
+  h2.section-title{
+    font-size:32px;font-weight:700;color:var(--white);
+    margin-bottom:8px;
+  }
+  .section-line{
+    width:48px;height:3px;
+    background:var(--accent);border-radius:2px;
+    margin-bottom:48px;
+  }
 
-    .hero {
-      padding: 80px 0 40px;
-      display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; align-items: center;
-    }
-    .hero h1 { font-size: 2.4rem; margin: 0 0 14px }
-    .hero p { color: var(--muted); margin: 0 0 18px }
-    .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px }
-    .btn {
-      display: inline-block; padding: 10px 14px; border-radius: 10px;
-      font-weight: 600; transition: transform .08s ease, background .2s ease;
-    }
-    .btn-primary { background: var(--accent); color: #041318 }
-    .btn-primary:hover { transform: translateY(-1px); background: var(--accent-dark) }
-    .btn-ghost { border: 1px solid #253042; color: var(--text); background: #0b1220 }
-    .btn-ghost:hover { transform: translateY(-1px); border-color: #3b4a62 }
+  /* HERO */
+  #hero{
+    min-height:100vh;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:0 8%;
+    background:radial-gradient(ellipse at 70% 50%, rgba(37,99,235,.12) 0%, transparent 60%);
+  }
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(37,99,235,.1);border:1px solid rgba(59,130,246,.3);
+    color:var(--accent2);font-size:13px;font-weight:500;
+    padding:6px 16px;border-radius:24px;margin-bottom:28px;width:fit-content;
+  }
+  .dot{width:8px;height:8px;background:#22c55e;border-radius:50%;animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+  .hero-name{
+    font-size:clamp(42px,6vw,72px);font-weight:800;
+    color:var(--white);line-height:1.1;margin-bottom:12px;
+  }
+  .hero-name span{color:var(--accent2);}
+  .hero-role{
+    font-size:clamp(18px,2.5vw,26px);color:var(--gray);
+    font-weight:400;margin-bottom:24px;
+  }
+  .hero-desc{
+    max-width:560px;color:#94a3b8;font-size:16px;
+    line-height:1.8;margin-bottom:40px;
+  }
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--accent);color:var(--white);
+    padding:13px 28px;border-radius:8px;font-size:15px;font-weight:600;
+    text-decoration:none;border:none;cursor:pointer;transition:background .2s;
+  }
+  .btn-primary:hover{background:var(--accent2);}
+  .btn-outline{
+    background:transparent;color:var(--white);
+    padding:13px 28px;border-radius:8px;font-size:15px;font-weight:600;
+    text-decoration:none;border:1px solid var(--border);cursor:pointer;
+    transition:border-color .2s,background .2s;
+  }
+  .btn-outline:hover{border-color:var(--accent2);background:rgba(37,99,235,.08);}
+  .hero-stats{
+    display:flex;gap:40px;margin-top:60px;flex-wrap:wrap;
+  }
+  .stat{text-align:left;}
+  .stat-num{font-size:28px;font-weight:800;color:var(--white);}
+  .stat-num span{color:var(--accent2);}
+  .stat-label{font-size:13px;color:var(--gray);margin-top:2px;}
 
-    .card {
-      background: var(--card); border: 1px solid #1f2937; border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-    }
+  /* ABOUT */
+  #about{background:var(--navy2);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .about-text p{color:#94a3b8;font-size:16px;line-height:1.9;margin-bottom:16px;}
+  .about-highlights{display:flex;flex-direction:column;gap:16px;}
+  .highlight-card{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:10px;padding:20px 24px;
+    border-left:3px solid var(--accent);
+  }
+  .highlight-card h4{color:var(--white);font-size:15px;font-weight:600;margin-bottom:4px;}
+  .highlight-card p{color:var(--gray);font-size:13px;margin:0;}
 
-    section { margin: 36px 0 }
-    .section-title { font-size: 1.6rem; margin: 0 0 14px }
+  /* SKILLS */
+  #skills{}
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
+  .skill-category{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:12px;padding:28px;
+  }
+  .skill-category h3{
+    color:var(--white);font-size:15px;font-weight:600;
+    margin-bottom:20px;display:flex;align-items:center;gap:10px;
+  }
+  .cat-icon{
+    width:32px;height:32px;border-radius:8px;
+    background:rgba(37,99,235,.2);
+    display:flex;align-items:center;justify-content:center;
+    font-size:16px;
+  }
+  .skill-tags{display:flex;flex-wrap:wrap;gap:10px;}
+  .skill-tag{
+    background:rgba(15,31,61,.8);border:1px solid var(--border);
+    color:var(--text);font-size:13px;font-weight:500;
+    padding:6px 14px;border-radius:6px;
+    transition:border-color .2s,color .2s;
+  }
+  .skill-tag:hover{border-color:var(--accent2);color:var(--white);}
 
-    .about { padding: 26px; display: grid; grid-template-columns: 1fr; gap: 18px }
-    .about p { margin: 0; color: var(--muted) }
+  /* EXPERIENCE */
+  #experience{background:var(--navy2);}
+  .timeline{display:flex;flex-direction:column;gap:0;}
+  .timeline-item{
+    display:grid;grid-template-columns:140px 1fr;gap:32px;
+    padding-bottom:40px;position:relative;
+  }
+  .timeline-item:not(:last-child)::after{
+    content:'';position:absolute;
+    left:159px;top:12px;bottom:0;
+    width:1px;background:var(--border);
+  }
+  .timeline-date{
+    text-align:right;color:var(--gray);font-size:13px;
+    padding-top:4px;line-height:1.5;
+  }
+  .timeline-date strong{color:var(--accent2);font-weight:600;display:block;margin-bottom:4px;}
+  .timeline-dot{
+    position:absolute;left:151px;top:4px;
+    width:17px;height:17px;border-radius:50%;
+    background:var(--accent);border:3px solid var(--navy2);
+    z-index:1;
+  }
+  .timeline-content{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:12px;padding:24px 28px;
+  }
+  .timeline-content h3{color:var(--white);font-size:17px;font-weight:700;margin-bottom:4px;}
+  .timeline-content .company{color:var(--accent2);font-size:14px;font-weight:500;margin-bottom:14px;}
+  .timeline-content ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+  .timeline-content ul li{
+    color:#94a3b8;font-size:14px;padding-left:16px;position:relative;line-height:1.6;
+  }
+  .timeline-content ul li::before{
+    content:'';position:absolute;left:0;top:9px;
+    width:5px;height:5px;border-radius:50%;background:var(--accent);
+  }
+  .it-badge{
+    display:inline-block;background:rgba(34,197,94,.1);
+    color:#4ade80;font-size:11px;font-weight:600;letter-spacing:1px;
+    padding:3px 10px;border-radius:4px;margin-left:10px;vertical-align:middle;
+  }
 
-    .skills { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px }
-    .chip {
-      padding: 8px 12px; border-radius: 999px; border: 1px solid #253042;
-      background: #0b1220; color: var(--text); font-size: 0.9rem;
-    }
+  /* PROJECTS */
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;}
+  .project-card{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:12px;padding:28px;
+    transition:border-color .2s,transform .2s;
+    display:flex;flex-direction:column;
+  }
+  .project-card:hover{border-color:var(--accent2);transform:translateY(-3px);}
+  .project-card.featured{border-color:rgba(37,99,235,.5);}
+  .project-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;}
+  .project-icon{font-size:28px;}
+  .proj-badge{
+    background:rgba(37,99,235,.15);color:var(--accent2);
+    font-size:11px;font-weight:600;padding:3px 10px;border-radius:4px;
+  }
+  .project-card h3{color:var(--white);font-size:17px;font-weight:700;margin-bottom:10px;}
+  .project-card p{color:#94a3b8;font-size:14px;line-height:1.7;flex:1;margin-bottom:20px;}
+  .project-stack{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+  .stack-tag{
+    background:rgba(15,31,61,.9);border:1px solid var(--border);
+    color:var(--gray);font-size:12px;padding:3px 10px;border-radius:4px;
+  }
+  .project-links{display:flex;gap:12px;margin-top:auto;}
+  .proj-link{
+    color:var(--accent2);font-size:13px;font-weight:600;
+    text-decoration:none;display:flex;align-items:center;gap:5px;
+    transition:color .2s;
+  }
+  .proj-link:hover{color:var(--white);}
+  .coming-soon{color:var(--gray);font-size:13px;font-style:italic;}
 
-    .projects-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-    }
-    .project { overflow: hidden }
-    .project img { width: 100%; height: 150px; object-fit: cover; display: block; border-bottom: 1px solid #1f2937 }
-    .project-content { padding: 16px }
-    .project h3 { margin: 0 0 8px; font-size: 1.1rem }
-    .project p { margin: 0 0 12px; color: var(--muted) }
-    .project .tags { display: flex; gap: 8px; flex-wrap: wrap }
-    .tag { font-size: 0.8rem; padding: 6px 10px; border-radius: 999px; background: #0b1220; border: 1px solid #253042 }
+  /* ACHIEVEMENTS */
+  #achievements{background:var(--navy2);}
+  .ach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+  .ach-card{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:12px;padding:24px;
+    display:flex;gap:16px;align-items:flex-start;
+  }
+  .ach-icon{
+    width:44px;height:44px;min-width:44px;border-radius:10px;
+    background:rgba(37,99,235,.15);
+    display:flex;align-items:center;justify-content:center;
+    font-size:20px;
+  }
+  .ach-card h4{color:var(--white);font-size:15px;font-weight:600;margin-bottom:5px;}
+  .ach-card p{color:var(--gray);font-size:13px;line-height:1.6;}
 
-    .contact { padding: 26px }
-    .contact-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px }
-    .contact-item { display: flex; gap: 10px; align-items: center }
-    .contact-item span { color: var(--muted) }
+  /* CONTACT */
+  #contact{text-align:center;}
+  .contact-card{
+    max-width:560px;margin:0 auto;
+    background:var(--card);border:1px solid var(--border);
+    border-radius:16px;padding:48px 40px;
+  }
+  .contact-card h3{color:var(--white);font-size:24px;font-weight:700;margin-bottom:12px;}
+  .contact-card p{color:var(--gray);font-size:15px;margin-bottom:32px;line-height:1.7;}
+  .contact-links{display:flex;flex-direction:column;gap:12px;}
+  .contact-link{
+    display:flex;align-items:center;gap:14px;
+    background:rgba(15,31,61,.8);border:1px solid var(--border);
+    border-radius:10px;padding:14px 20px;
+    color:var(--text);text-decoration:none;font-size:14px;
+    transition:border-color .2s,background .2s;
+  }
+  .contact-link:hover{border-color:var(--accent2);background:rgba(37,99,235,.08);}
+  .contact-link span:first-child{font-size:20px;width:24px;text-align:center;}
+  .contact-link strong{color:var(--white);}
 
-    footer { text-align: center; padding: 28px 0; color: var(--muted); border-top: 1px solid #1f2937; margin-top: 24px }
+  /* FOOTER */
+  footer{
+    text-align:center;padding:24px 8%;
+    border-top:1px solid var(--border);
+    color:var(--gray);font-size:13px;
+  }
+  footer span{color:var(--accent2);}
 
-    @media (max-width: 840px) {
-      .hero { grid-template-columns: 1fr; padding: 60px 0 20px }
-    }
-  </style>
+  @media(max-width:768px){
+    .about-grid{grid-template-columns:1fr;}
+    .timeline-item{grid-template-columns:1fr;}
+    .timeline-date{text-align:left;}
+    .timeline-item::after,.timeline-dot{display:none;}
+    nav{padding:0 4%;}
+    section{padding:60px 5%;}
+    #hero{padding:0 5%;}
+  }
+</style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <div class="brand">Your Name</div>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="resume.pdf" target="_blank">Resume</a></li>
-        </ul>
-      </nav>
+
+<nav>
+  <div class="logo">M.<span>Rahul</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-badge">
+    <span class="dot"></span>
+    Open to Full Stack Developer Roles
+  </div>
+  <h1 class="hero-name">Hi, I'm <span>M. Rahul</span></h1>
+  <p class="hero-role">Full Stack Developer &nbsp;·&nbsp; Bengaluru, India</p>
+  <p class="hero-desc">
+    I build web applications using HTML, CSS, JavaScript, Node.js, and PHP.
+    Currently interning at Tecnotree Convergence, working on real-world full stack projects
+    involving REST APIs, backend services, and modern development workflows.
+  </p>
+  <div class="hero-btns">
+    <a href="#projects" class="btn-primary">View My Projects</a>
+    <a href="#contact" class="btn-outline">Get In Touch</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">9<span>+</span></div>
+      <div class="stat-label">Months of Dev Experience</div>
     </div>
-  </header>
+    <div class="stat">
+      <div class="stat-num">5<span>+</span></div>
+      <div class="stat-label">Technologies Used</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1<span>st</span></div>
+      <div class="stat-label">IEEE State Level Award</div>
+    </div>
+  </div>
+</section>
 
-  <main class="container">
-    <section class="hero">
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-tag">About Me</div>
+  <h2 class="section-title">Who I Am</h2>
+  <div class="section-line"></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I'm a Full Stack Developer intern at Tecnotree Convergence, Bengaluru, with a background
+        in Electrical & Electronics Engineering. Over the past 9 months I've been building and
+        maintaining web applications, integrating APIs, and working within a professional
+        development team.
+      </p>
+      <p>
+        Before transitioning into software, I worked in electrical maintenance and technical
+        supervision — which gave me a strong foundation in problem-solving, reading systems,
+        and working under pressure. I bring that same discipline to writing clean, functional code.
+      </p>
+      <p>
+        I'm actively looking for a Full Stack Developer role where I can contribute immediately
+        and continue growing as an engineer.
+      </p>
+    </div>
+    <div class="about-highlights">
+      <div class="highlight-card">
+        <h4>Currently At</h4>
+        <p>Tecnotree Convergence Pvt. Ltd. — Full Stack Developer Intern</p>
+      </div>
+      <div class="highlight-card">
+        <h4>Education</h4>
+        <p>B.E. Electrical & Electronics Engineering — VTU, 2023</p>
+      </div>
+      <div class="highlight-card">
+        <h4>Looking For</h4>
+        <p>Full Stack Developer roles — open to both product and service companies</p>
+      </div>
+      <div class="highlight-card">
+        <h4>Location</h4>
+        <p>Bengaluru, Karnataka, India — open to on-site and remote</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-tag">Technical Skills</div>
+  <h2 class="section-title">What I Work With</h2>
+  <div class="section-line"></div>
+  <div class="skills-grid">
+    <div class="skill-category">
+      <h3><span class="cat-icon">⚙</span> Languages & Frameworks</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">HTML5</span>
+        <span class="skill-tag">CSS3</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">PHP</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <h3><span class="cat-icon">🔧</span> Tools & Platforms</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">GitHub</span>
+        <span class="skill-tag">REST APIs</span>
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">VS Code</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <h3><span class="cat-icon">🤖</span> AI-Assisted Dev</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Claude AI</span>
+        <span class="skill-tag">ChatGPT</span>
+        <span class="skill-tag">GitHub Copilot</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <h3><span class="cat-icon">📄</span> Other</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">MS Word</span>
+        <span class="skill-tag">MS Excel</span>
+        <span class="skill-tag">PowerPoint</span>
+        <span class="skill-tag">Technical Docs</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-tag">Experience</div>
+  <h2 class="section-title">Work History</h2>
+  <div class="section-line"></div>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-date">
+        <strong>Aug 2024 – Present</strong>
+        9 months
+      </div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>Full Stack Developer Intern <span class="it-badge">IT</span></h3>
+        <div class="company">Tecnotree Convergence Pvt. Ltd. · Bengaluru</div>
+        <ul>
+          <li>Building and maintaining responsive web application modules using HTML5, CSS3, and JavaScript</li>
+          <li>Developing server-side logic and REST API endpoints using Node.js and PHP</li>
+          <li>Integrating third-party REST APIs to connect frontend interfaces with backend services</li>
+          <li>Managing source code with Git and GitHub, contributing to team code reviews</li>
+          <li>Using Claude AI, ChatGPT, and GitHub Copilot to accelerate development and debug efficiently</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">
+        <strong>Mar 2024 – June 2025</strong>
+        15 months
+      </div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>Technical Supervisor – Electrical Maintenance</h3>
+        <div class="company">Tecnotree Convergence Pvt. Ltd.</div>
+        <ul>
+          <li>Supervised team responsible for electrical maintenance of facility systems and MCC panels</li>
+          <li>Planned preventative maintenance schedules ensuring zero unplanned downtime</li>
+          <li>Coordinated with cross-functional teams and managed maintenance workflows</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">
+        <strong>march 2023 – Feb 2024</strong>
+        11 months
+      </div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <h3>Electrical Technical Trainee</h3>
+        <div class="company">BMM Ispat Limited</div>
+        <ul>
+          <li>Performed motor maintenance and verified MCC panel board configurations</li>
+          <li>Diagnosed faults in electrical equipment under live supervision</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-tag">Projects</div>
+  <h2 class="section-title">Things I've Built</h2>
+  <div class="section-line"></div>
+  <div class="projects-grid">
+
+    <div class="project-card featured">
+      <div class="project-top">
+        <span class="project-icon">🌐</span>
+        <span class="proj-badge">Live Soon</span>
+      </div>
+      <h3>Personal Portfolio Website</h3>
+      <p>This portfolio — a fully responsive personal website built from scratch with clean HTML, CSS, and JavaScript. No frameworks, no templates.</p>
+      <div class="project-stack">
+        <span class="stack-tag">HTML5</span>
+        <span class="stack-tag">CSS3</span>
+        <span class="stack-tag">JavaScript</span>
+        <span class="stack-tag">GitHub Pages</span>
+      </div>
+      <div class="project-links">
+        <span class="coming-soon">Deploying to GitHub Pages →</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top">
+        <span class="project-icon">⚡</span>
+        <span class="proj-badge">Academic · Award</span>
+      </div>
+      <h3>Solar Powered E-Vehicle</h3>
+      <p>Built a functional, low-cost solar-powered electric vehicle using accessible components. Won Best Project of the Year and 1st place at IEEE State-Level Symposium PRAKALP-2K22.</p>
+      <div class="project-stack">
+        <span class="stack-tag">Electrical Systems</span>
+        <span class="stack-tag">Solar Energy</span>
+        <span class="stack-tag">Circuit Design</span>
+      </div>
+      <div class="project-links">
+        <span class="coming-soon">IEEE Recognised · 2023</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top">
+        <span class="project-icon">📋</span>
+        <span class="proj-badge">Coming Soon</span>
+      </div>
+      <h3>Full Stack Task Manager</h3>
+      <p>A full stack web app where users can create, update and track tasks — with a Node.js backend, MySQL database, and clean frontend UI.</p>
+      <div class="project-stack">
+        <span class="stack-tag">Node.js</span>
+        <span class="stack-tag">MySQL</span>
+        <span class="stack-tag">HTML/CSS/JS</span>
+        <span class="stack-tag">REST API</span>
+      </div>
+      <div class="project-links">
+        <span class="coming-soon">In development →</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-tag">Achievements</div>
+  <h2 class="section-title">Recognition</h2>
+  <div class="section-line"></div>
+  <div class="ach-grid">
+    <div class="ach-card">
+      <div class="ach-icon">🏆</div>
       <div>
-        <h1>PHP developer crafting clean, reliable web apps</h1>
-        <p>I build backend features, performant APIs, and simple interfaces. Currently exploring modern PHP, MySQL, and cloud deployment.</p>
-        <div class="cta">
-          <a class="btn btn-primary" href="#projects">View projects</a>
-          <a class="btn btn-ghost" href="#contact">Get in touch</a>
-        </div>
+        <h4>IEEE PRAKALP-2K22 — 1st Place</h4>
+        <p>Secured first place at the Karnataka State-Level IEEE Project Symposium for the Solar E-Vehicle project.</p>
       </div>
-      <div class="card about">
-        <h2 id="about" class="section-title">About me</h2>
-        <p>Short bio: highlight your experience, what you enjoy building, and any notable achievements or certifications.</p>
-        <div class="skills">
-          <span class="chip">PHP</span>
-          <span class="chip">MySQL</span>
-          <span class="chip">Laravel</span>
-          <span class="chip">REST APIs</span>
-          <span class="chip">Docker</span>
-          <span class="chip">GitHub Actions</span>
-        </div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">🎖</div>
+      <div>
+        <h4>Best Project of the Year</h4>
+        <p>Recognised by college for outstanding innovation and practical impact with the Solar E-Vehicle build.</p>
       </div>
-    </section>
-
-    <section id="projects">
-      <h2 class="section-title">Featured projects</h2>
-      <div class="projects-grid">
-        <article class="card project">
-          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop" alt="Project cover" />
-          <div class="project-content">
-            <h3>Project One: Portfolio CMS</h3>
-            <p>Minimal CMS built with PHP and MySQL, featuring auth, CRUD, and file uploads.</p>
-            <div class="tags">
-              <span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Auth</span>
-            </div>
-            <p><a href="https://github.com/yourusername/project-one" target="_blank">Source code</a> · <a href="#" target="_blank">Live demo</a></p>
-          </div>
-        </article>
-
-        <article class="card project">
-          <img src="https://images.unsplash.com/photo-1556767576-6d3b3f2ccb23?q=80&w=1200&auto=format&fit=crop" alt="Project cover" />
-          <div class="project-content">
-            <h3>Project Two: Task API</h3>
-            <p>REST API with JWT auth and pagination. Deployed with Docker.</p>
-            <div class="tags">
-              <span class="tag">PHP</span><span class="tag">REST</span><span class="tag">Docker</span>
-            </div>
-            <p><a href="https://github.com/yourusername/project-two" target="_blank">Source code</a></p>
-          </div>
-        </article>
-
-        <article class="card project">
-          <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200&auto=format&fit=crop" alt="Project cover" />
-          <div class="project-content">
-            <h3>Project Three: Analytics Dashboard</h3>
-            <p>Metrics dashboard with charts and role-based access control.</p>
-            <div class="tags">
-              <span class="tag">PHP</span><span class="tag">Charts</span><span class="tag">RBAC</span>
-            </div>
-            <p><a href="https://github.com/yourusername/project-three" target="_blank">Source code</a></p>
-          </div>
-        </article>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">⭐</div>
+      <div>
+        <h4>Client Appreciation</h4>
+        <p>Received multiple appreciation letters from clients acknowledging exceptional service and professionalism.</p>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section id="contact" class="card contact">
-      <h2 class="section-title">Contact</h2>
-      <ul class="contact-list">
-        <li class="contact-item"><strong>Email:</strong> <span>your.email@example.com</span></li>
-        <li class="contact-item"><strong>GitHub:</strong> <a href="https://github.com/yourusername" target="_blank">@yourusername</a></li>
-        <li class="contact-item"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/yourprofile" target="_blank">yourprofile</a></li>
-        <li class="contact-item"><strong>Location:</strong> <span>Bengaluru, India</span></li>
-      </ul>
-    </section>
-  </main>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-tag">Contact</div>
+  <h2 class="section-title">Let's Connect</h2>
+  <div class="section-line" style="margin:0 auto 48px;"></div>
+  <div class="contact-card">
+    <h3>Open to Opportunities</h3>
+    <p>I'm actively looking for Full Stack Developer roles in Bengaluru. If you have an opening or just want to connect, reach out — I respond quickly.</p>
+    <div class="contact-links">
+      <a href="mailto:m.rahulrahula29@gmail.com" class="contact-link">
+        <span>✉</span>
+        <div><div style="font-size:12px;color:var(--gray);margin-bottom:2px;">Email</div><strong>m.rahulrahula29@gmail.com</strong></div>
+      </a>
+      <a href="tel:6361446311" class="contact-link">
+        <span>📞</span>
+        <div><div style="font-size:12px;color:var(--gray);margin-bottom:2px;">Phone</div><strong>6361446311</strong></div>
+      </a>
+      <a href="https://github.com/" class="contact-link">
+        <span>⌥</span>
+        <div><div style="font-size:12px;color:var(--gray);margin-bottom:2px;">GitHub</div><strong>github.com/your-username</strong></div>
+      </a>
+      <a class="contact-link" style="cursor:default;">
+        <span>📍</span>
+        <div><div style="font-size:12px;color:var(--gray);margin-bottom:2px;">Location</div><strong>Bengaluru, Karnataka, India</strong></div>
+      </a>
+    </div>
+  </div>
+</section>
 
-  <footer>
-    © <span id="year"></span> Your Name · Built with PHP & MySQL
-  </footer>
+<footer>
+  <p>Built by <span>M. Rahul</span> · Full Stack Developer · Bengaluru</p>
+</footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
